@@ -11,11 +11,25 @@ export default function CadastroPage() {
     const [ano, setAno] = useState("")
 
 
-    async function cadastrar(e:React.FormEvent){
-        e.preventDefault()
+  async function cadastrar(e: React.FormEvent) {
+    e.preventDefault()
 
-        const musica:Musica = {titulo, artista, album, ano:Number(ano)}
-    }
+   // try {
+        const musica: Musica = {
+            titulo,
+            artista,
+            album,
+            ano: Number(ano)
+      }
+
+        await musicaService.cadastrar(musica)
+
+    /*    alert("Música cadastrada com sucesso!")
+    } catch (error) {
+        console.error("Erro ao cadastrar música:", error)
+        alert("Erro ao cadastrar música. Tente novamente.")
+    }*/
+}
 
     return(
         <main className="min-h-screen flex items-center justify-center bg-gray-10 p-4">
@@ -24,13 +38,13 @@ export default function CadastroPage() {
                 <input placeholder="titulo" value={titulo} onChange={(e)=>setTitulo(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded"
                 />
-                <input placeholder="artista" value={artista} onChange={(e)=>setTitulo(e.target.value)}
+                <input placeholder="artista" value={artista} onChange={(e)=>setArtista(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded"
                 />
-                <input placeholder="album" value={album} onChange={(e)=>setTitulo(e.target.value)}
+                <input placeholder="album" value={album} onChange={(e)=>setAlbum(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded"
                 />
-                <input placeholder="ano" value={ano} onChange={(e)=>setTitulo(e.target.value)}
+                <input placeholder="ano" value={ano} onChange={(e)=>setAno(e.target.value)}
                 className="border border-gray-300 p-2 w-full rounded"
                 />
                 
